@@ -15,6 +15,13 @@
       "when": 1790302516695,
       "tag": "0001_catalog_products_prices_partners",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790302590920,
+      "tag": "0002_operations_orders_and_inventory",
+      "breakpoints": true
     }
   ]
 }
