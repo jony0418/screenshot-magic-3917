@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1790302472319,
+      "tag": "0000_core_roles_and_settings",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790302516695,
+      "tag": "0001_catalog_products_prices_partners",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790302590920,
+      "tag": "0002_operations_orders_and_inventory",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1790302675102,
+      "tag": "0003_business_rpc_functions",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790302743503,
+      "tag": "0004_seed_demo_data",
+      "breakpoints": true
+    }
+  ]
+}
