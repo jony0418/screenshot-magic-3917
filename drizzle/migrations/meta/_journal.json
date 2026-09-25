@@ -36,6 +36,13 @@
       "when": 1790302743503,
       "tag": "0004_seed_demo_data",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1790304172548,
+      "tag": "0005_admin_roles_and_draft_guards",
+      "breakpoints": true
     }
   ]
 }
