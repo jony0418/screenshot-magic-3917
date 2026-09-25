@@ -13,6 +13,13 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AuthProvider } from "@/hooks/use-auth";
 import { Toaster } from "@/components/ui/sonner";
+import { DIAGNOSTICS_SCRIPT } from "@/lib/diagnostics-script";
+
+declare global {
+  interface Window {
+    __coimbecDiag?: { log: (type: string, message: string, extra?: string) => void; show: () => void };
+  }
+}
 
 
 function NotFoundComponent() {
@@ -20,16 +27,16 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Página no encontrada</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          La página que buscas no existe.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            Ir al inicio
           </Link>
         </div>
       </div>
@@ -42,16 +49,18 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    window.__coimbecDiag?.log("route-error", error.message, error.stack);
+    if (/module|import|chunk/i.test(error.message)) window.__coimbecDiag?.show();
   }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          Esta página no cargó
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Ocurrió un error al cargar. Puedes reintentar, recargar o abrir el panel de diagnóstico (Ctrl+Shift+D).
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -61,14 +70,20 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            Reintentar
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            Ir al inicio
           </a>
+          <button
+            onClick={() => window.__coimbecDiag?.show()}
+            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-accent"
+          >
+            Diagnóstico
+          </button>
         </div>
       </div>
     </div>
@@ -115,6 +130,7 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="es">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: DIAGNOSTICS_SCRIPT }} />
         <HeadContent />
       </head>
       <body>
