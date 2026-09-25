@@ -65,7 +65,7 @@ export function ProductFormDialog({
   onOpenChange: (open: boolean) => void;
   onSubmit: (values: ProductFormValues) => void;
   submitting?: boolean;
-  defaultValues?: Partial<ProductFormValues>;
+  defaultValues?: Partial<FormShape>;
   title?: string;
 }) {
   const form = useForm<FormShape>({
@@ -122,14 +122,14 @@ export function ProductFormDialog({
           className="grid gap-3 sm:grid-cols-2"
           onSubmit={form.handleSubmit((values) =>
             onSubmit({
-              ...values,
+              ...(values as FormShape),
               barcode: values.barcode || null,
               brand: values.brand || null,
               description: values.description || null,
               notes: values.notes || null,
               category_id: values.category_id || null,
               unit_id: values.unit_id || null,
-            }),
+            } as ProductFormValues),
           )}
 
         >
