@@ -80,13 +80,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Inventario MX — Control de inventarios, compras y ventas" },
+      { title: "Coimbec — Control de inventarios, compras y ventas" },
       {
         name: "description",
         content:
           "Sistema de control de inventarios, compras y ventas para pymes mexicanas: kárdex, costo promedio, listas de precios e IVA 16%.",
       },
-      { property: "og:title", content: "Inventario MX" },
+      { property: "og:title", content: "Coimbec" },
       {
         property: "og:description",
         content: "Control de inventarios, compras y ventas para pymes mexicanas.",

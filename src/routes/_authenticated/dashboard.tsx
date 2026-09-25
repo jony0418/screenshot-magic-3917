@@ -11,12 +11,12 @@ import { money, qty } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
-      { title: "Tablero — Inventario MX" },
+      { title: "Tablero — Coimbec" },
       {
         name: "description",
         content: "Valor del inventario, productos bajo mínimo y órdenes pendientes.",
       },
-      { property: "og:title", content: "Tablero — Inventario MX" },
+      { property: "og:title", content: "Tablero — Coimbec" },
       {
         property: "og:description",
         content: "Valor del inventario, productos bajo mínimo y órdenes pendientes.",

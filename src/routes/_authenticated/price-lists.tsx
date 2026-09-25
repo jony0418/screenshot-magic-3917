@@ -30,12 +30,12 @@ import { money } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/price-lists")({
   head: () => ({
     meta: [
-      { title: "Listas de precios — Inventario MX" },
+      { title: "Listas de precios — Coimbec" },
       {
         name: "description",
         content: "Administra listas de precios y aplica aumentos masivos por porcentaje.",
       },
-      { property: "og:title", content: "Listas de precios — Inventario MX" },
+      { property: "og:title", content: "Listas de precios — Coimbec" },
       {
         property: "og:description",
         content: "Administra listas de precios y aplica aumentos masivos por porcentaje.",

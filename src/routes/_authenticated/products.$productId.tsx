@@ -17,12 +17,12 @@ import { dateTimeMX, money, MOVEMENT_LABEL, qty } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/products/$productId")({
   head: () => ({
     meta: [
-      { title: "Ficha de producto — Inventario MX" },
+      { title: "Ficha de producto — Coimbec" },
       {
         name: "description",
         content: "Detalle del producto: precios por lista, existencias y kárdex de movimientos.",
       },
-      { property: "og:title", content: "Ficha de producto — Inventario MX" },
+      { property: "og:title", content: "Ficha de producto — Coimbec" },
       {
         property: "og:description",
         content: "Detalle del producto: precios por lista, existencias y kárdex.",

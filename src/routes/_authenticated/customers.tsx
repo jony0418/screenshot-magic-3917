@@ -31,12 +31,12 @@ import { dateMX, money, SO_STATUS_LABEL } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/customers")({
   head: () => ({
     meta: [
-      { title: "Clientes — Inventario MX" },
+      { title: "Clientes — Coimbec" },
       {
         name: "description",
         content: "Directorio de clientes, lista de precios asignada e historial de ventas.",
       },
-      { property: "og:title", content: "Clientes — Inventario MX" },
+      { property: "og:title", content: "Clientes — Coimbec" },
       {
         property: "og:description",
         content: "Directorio de clientes, lista de precios e historial de ventas.",

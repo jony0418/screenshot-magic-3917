@@ -11,12 +11,12 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Iniciar sesión — Inventario MX" },
+      { title: "Iniciar sesión — Coimbec" },
       {
         name: "description",
         content: "Accede al sistema de inventarios, compras y ventas de tu empresa.",
       },
-      { property: "og:title", content: "Iniciar sesión — Inventario MX" },
+      { property: "og:title", content: "Iniciar sesión — Coimbec" },
       {
         property: "og:description",
         content: "Accede al sistema de inventarios, compras y ventas de tu empresa.",
@@ -75,7 +75,7 @@ function LoginPage() {
         <div className="mb-6 flex items-center gap-2">
           <Boxes className="h-6 w-6 text-primary" />
           <div>
-            <h1 className="text-lg font-semibold">Inventario MX</h1>
+            <h1 className="text-lg font-semibold">Coimbec</h1>
             <p className="text-xs text-muted-foreground">Compras, ventas y almacén</p>
           </div>
         </div>

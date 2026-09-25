@@ -86,7 +86,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <div className="flex items-center gap-2 border-b border-sidebar-border px-4 py-4">
           <Boxes className="h-5 w-5 text-sidebar-primary" />
           <div className="leading-tight">
-            <p className="text-sm font-semibold">Inventario MX</p>
+            <p className="text-sm font-semibold">Coimbec</p>
             <p className="text-[11px] text-sidebar-foreground/60">Compras y ventas</p>
           </div>
         </div>
