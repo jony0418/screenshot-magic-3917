@@ -195,6 +195,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "goods_receipt_lines_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products_public"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "goods_receipt_lines_purchase_order_line_id_fkey"
             columns: ["purchase_order_line_id"]
             isOneToOne: false
@@ -306,6 +313,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "inventory_movements_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products_public"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "inventory_movements_warehouse_id_fkey"
             columns: ["warehouse_id"]
             isOneToOne: false
@@ -355,6 +369,13 @@ export type Database = {
             columns: ["product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "price_history_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products_public"
             referencedColumns: ["id"]
           },
         ]
@@ -430,6 +451,13 @@ export type Database = {
             columns: ["product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "product_prices_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products_public"
             referencedColumns: ["id"]
           },
         ]
@@ -588,6 +616,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "purchase_order_lines_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products_public"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "purchase_order_lines_purchase_order_id_fkey"
             columns: ["purchase_order_id"]
             isOneToOne: false
@@ -711,6 +746,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "sales_order_lines_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products_public"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "sales_order_lines_sales_order_id_fkey"
             columns: ["sales_order_id"]
             isOneToOne: false
@@ -822,6 +864,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "shipment_lines_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products_public"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "shipment_lines_sales_order_line_id_fkey"
             columns: ["sales_order_line_id"]
             isOneToOne: false
@@ -919,6 +968,13 @@ export type Database = {
             columns: ["product_id"]
             isOneToOne: false
             referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stock_levels_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products_public"
             referencedColumns: ["id"]
           },
           {
@@ -1067,9 +1123,119 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      products_public: {
+        Row: {
+          barcode: string | null
+          brand: string | null
+          category_id: string | null
+          created_at: string | null
+          description: string | null
+          id: string | null
+          image_url: string | null
+          is_active: boolean | null
+          max_stock: number | null
+          min_stock: number | null
+          name: string | null
+          notes: string | null
+          sku: string | null
+          tax_rate: number | null
+          unit_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          barcode?: string | null
+          brand?: string | null
+          category_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: string | null
+          image_url?: string | null
+          is_active?: boolean | null
+          max_stock?: number | null
+          min_stock?: number | null
+          name?: string | null
+          notes?: string | null
+          sku?: string | null
+          tax_rate?: number | null
+          unit_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          barcode?: string | null
+          brand?: string | null
+          category_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: string | null
+          image_url?: string | null
+          is_active?: boolean | null
+          max_stock?: number | null
+          min_stock?: number | null
+          name?: string | null
+          notes?: string | null
+          sku?: string | null
+          tax_rate?: number | null
+          unit_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "products_unit_id_fkey"
+            columns: ["unit_id"]
+            isOneToOne: false
+            referencedRelation: "units"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Functions: {
+      adjust_inventory: {
+        Args: {
+          _product_id: string
+          _qty: number
+          _reason: string
+          _warehouse_id: string
+        }
+        Returns: undefined
+      }
+      apply_movement: {
+        Args: {
+          _notes: string
+          _product_id: string
+          _qty: number
+          _ref_id: string
+          _ref_type: string
+          _type: Database["public"]["Enums"]["movement_type"]
+          _unit_cost: number
+          _warehouse_id: string
+        }
+        Returns: undefined
+      }
+      bulk_update_prices: {
+        Args: { _category_id?: string; _pct: number; _price_list_id: string }
+        Returns: number
+      }
+      cancel_purchase_order: {
+        Args: { _purchase_order_id: string; _reason?: string }
+        Returns: undefined
+      }
+      cancel_sales_order: {
+        Args: { _reason?: string; _sales_order_id: string }
+        Returns: undefined
+      }
+      confirm_sales_order: {
+        Args: { _sales_order_id: string }
+        Returns: undefined
+      }
+      dashboard_summary: { Args: never; Returns: Json }
       has_any_role: {
         Args: { _roles: Database["public"]["Enums"]["app_role"][] }
         Returns: boolean
@@ -1082,9 +1248,37 @@ export type Database = {
         Returns: boolean
       }
       is_admin: { Args: never; Returns: boolean }
+      low_stock_products: {
+        Args: never
+        Returns: {
+          id: string
+          min_stock: number
+          name: string
+          qty_on_hand: number
+          sku: string
+        }[]
+      }
       my_roles: {
         Args: never
         Returns: Database["public"]["Enums"]["app_role"][]
+      }
+      receive_purchase_order: {
+        Args: {
+          _lines: Json
+          _notes?: string
+          _purchase_order_id: string
+          _receipt_date?: string
+        }
+        Returns: string
+      }
+      ship_sales_order: {
+        Args: {
+          _lines: Json
+          _notes?: string
+          _sales_order_id: string
+          _shipment_date?: string
+        }
+        Returns: string
       }
     }
     Enums: {
