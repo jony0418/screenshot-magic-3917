@@ -1,5 +1,6 @@
+import logoAsset from "@/assets/coimbec-logo.jpeg.asset.json";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { Boxes, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -11,12 +12,12 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Iniciar sesión — Inventario MX" },
+      { title: "Iniciar sesión — Coimbec" },
       {
         name: "description",
         content: "Accede al sistema de inventarios, compras y ventas de tu empresa.",
       },
-      { property: "og:title", content: "Iniciar sesión — Inventario MX" },
+      { property: "og:title", content: "Iniciar sesión — Coimbec" },
       {
         property: "og:description",
         content: "Accede al sistema de inventarios, compras y ventas de tu empresa.",
@@ -73,9 +74,9 @@ function LoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-sidebar px-4 py-10">
       <div className="w-full max-w-sm rounded-lg border border-border bg-card p-6 shadow-lg">
         <div className="mb-6 flex items-center gap-2">
-          <Boxes className="h-6 w-6 text-primary" />
+          <img src={logoAsset.url} alt="Coimbec" className="h-12 w-12 rounded-full" />
           <div>
-            <h1 className="text-lg font-semibold">Inventario MX</h1>
+            <h1 className="text-lg font-semibold">Coimbec</h1>
             <p className="text-xs text-muted-foreground">Compras, ventas y almacén</p>
           </div>
         </div>

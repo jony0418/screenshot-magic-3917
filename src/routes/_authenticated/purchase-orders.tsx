@@ -6,9 +6,9 @@ import { EmptyState } from "@/components/table-states";
 export const Route = createFileRoute("/_authenticated/purchase-orders")({
   head: () => ({
     meta: [
-      { title: "Órdenes de compra — Inventario MX" },
+      { title: "Órdenes de compra — Coimbec" },
       { name: "description", content: "Órdenes de compra, recepciones y costos por proveedor." },
-      { property: "og:title", content: "Órdenes de compra — Inventario MX" },
+      { property: "og:title", content: "Órdenes de compra — Coimbec" },
       {
         property: "og:description",
         content: "Órdenes de compra, recepciones y costos por proveedor.",

@@ -24,9 +24,9 @@ import { dateMX, money, PO_STATUS_LABEL } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/suppliers")({
   head: () => ({
     meta: [
-      { title: "Proveedores — Inventario MX" },
+      { title: "Proveedores — Coimbec" },
       { name: "description", content: "Directorio de proveedores y su historial de compras." },
-      { property: "og:title", content: "Proveedores — Inventario MX" },
+      { property: "og:title", content: "Proveedores — Coimbec" },
       {
         property: "og:description",
         content: "Directorio de proveedores y su historial de compras.",

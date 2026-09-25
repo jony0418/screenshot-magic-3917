@@ -24,9 +24,9 @@ import { money, qty } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/products/")({
   head: () => ({
     meta: [
-      { title: "Productos — Inventario MX" },
+      { title: "Productos — Coimbec" },
       { name: "description", content: "Catálogo de productos con SKU, código de barras y precios." },
-      { property: "og:title", content: "Productos — Inventario MX" },
+      { property: "og:title", content: "Productos — Coimbec" },
       {
         property: "og:description",
         content: "Catálogo de productos con SKU, código de barras y precios.",

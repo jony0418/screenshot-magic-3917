@@ -6,9 +6,9 @@ import { EmptyState } from "@/components/table-states";
 export const Route = createFileRoute("/_authenticated/settings")({
   head: () => ({
     meta: [
-      { title: "Configuración — Inventario MX" },
+      { title: "Configuración — Coimbec" },
       { name: "description", content: "Usuarios, roles, almacenes, categorías, unidades y empresa." },
-      { property: "og:title", content: "Configuración — Inventario MX" },
+      { property: "og:title", content: "Configuración — Coimbec" },
       {
         property: "og:description",
         content: "Usuarios, roles, almacenes, categorías, unidades y empresa.",

@@ -1,3 +1,4 @@
+import logoAsset from "@/assets/coimbec-logo.jpeg.asset.json";
 import { Link, useRouter } from "@tanstack/react-router";
 import {
   Boxes,
@@ -84,9 +85,9 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="flex min-h-screen bg-background">
       <aside className="no-print sticky top-0 hidden h-screen w-60 shrink-0 flex-col bg-sidebar text-sidebar-foreground md:flex">
         <div className="flex items-center gap-2 border-b border-sidebar-border px-4 py-4">
-          <Boxes className="h-5 w-5 text-sidebar-primary" />
+          <img src={logoAsset.url} alt="Coimbec" className="h-9 w-9 rounded-full" />
           <div className="leading-tight">
-            <p className="text-sm font-semibold">Inventario MX</p>
+            <p className="text-sm font-semibold">Coimbec</p>
             <p className="text-[11px] text-sidebar-foreground/60">Compras y ventas</p>
           </div>
         </div>
