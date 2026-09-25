@@ -93,7 +93,7 @@ function StockTab() {
 
   useEffect(() => {
     if (!warehouseId && warehouses.data?.length) {
-      setWarehouseId((warehouses.data.find((w) => w.is_default) ?? warehouses.data[0]).id);
+      setWarehouseId((warehouses.data.find((w) => w.is_default) ?? warehouses.data[0])!.id);
     }
   }, [warehouses.data, warehouseId]);
 
@@ -365,7 +365,7 @@ function AdjustTab({ onDone }: { onDone: () => void }) {
 
   useEffect(() => {
     if (!warehouseId && warehouses.data?.length) {
-      setWarehouseId((warehouses.data.find((w) => w.is_default) ?? warehouses.data[0]).id);
+      setWarehouseId((warehouses.data.find((w) => w.is_default) ?? warehouses.data[0])!.id);
     }
   }, [warehouses.data, warehouseId]);
 

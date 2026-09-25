@@ -277,7 +277,7 @@ function PurchaseOrderEditor({
 
   useEffect(() => {
     if (!warehouseId && warehouses.data?.length) {
-      setWarehouseId((warehouses.data.find((w) => w.is_default) ?? warehouses.data[0]).id);
+      setWarehouseId((warehouses.data.find((w) => w.is_default) ?? warehouses.data[0])!.id);
     }
   }, [warehouses.data, warehouseId]);
 
@@ -673,7 +673,7 @@ function ReceiveDialog({
         _purchase_order_id: order.id,
         _lines: lines,
         _receipt_date: date,
-        _notes: notes || undefined,
+        ...(notes ? { _notes: notes } : {}),
       });
       if (error) throw error;
     },
@@ -728,7 +728,7 @@ function ReceiveDialog({
                       className={`${selectClass} num w-full text-right`}
                       value={values[l.id]?.qty ?? ""}
                       onChange={(e) =>
-                        setValues({ ...values, [l.id]: { ...values[l.id], qty: e.target.value } })
+                        setValues({ ...values, [l.id]: { cost: values[l.id]?.cost ?? "", qty: e.target.value } })
                       }
                     />
                   </td>
@@ -740,7 +740,7 @@ function ReceiveDialog({
                       className={`${selectClass} num w-full text-right`}
                       value={values[l.id]?.cost ?? ""}
                       onChange={(e) =>
-                        setValues({ ...values, [l.id]: { ...values[l.id], cost: e.target.value } })
+                        setValues({ ...values, [l.id]: { qty: values[l.id]?.qty ?? "", cost: e.target.value } })
                       }
                     />
                   </td>

@@ -303,7 +303,7 @@ function SalesOrderEditor({
 
   useEffect(() => {
     if (!warehouseId && warehouses.data?.length) {
-      setWarehouseId((warehouses.data.find((w) => w.is_default) ?? warehouses.data[0]).id);
+      setWarehouseId((warehouses.data.find((w) => w.is_default) ?? warehouses.data[0])!.id);
     }
   }, [warehouses.data, warehouseId]);
 
@@ -707,7 +707,7 @@ function ShipDialog({
         _sales_order_id: order.id,
         _lines: lines,
         _shipment_date: date,
-        _notes: notes || undefined,
+        ...(notes ? { _notes: notes } : {}),
       });
       if (error) throw error;
     },
