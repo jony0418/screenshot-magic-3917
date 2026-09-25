@@ -29,6 +29,13 @@
       "when": 1790302675102,
       "tag": "0003_business_rpc_functions",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790302743503,
+      "tag": "0004_seed_demo_data",
+      "breakpoints": true
     }
   ]
 }
