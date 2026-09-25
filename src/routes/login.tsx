@@ -1,6 +1,6 @@
 import logoAsset from "@/assets/coimbec-logo.jpeg.asset.json";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { Boxes, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
