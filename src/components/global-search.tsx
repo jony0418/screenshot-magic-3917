@@ -57,11 +57,18 @@ export function GlobalSearch({
     },
   });
 
-  function go(to: string, params?: Record<string, string>) {
+  function goProduct(productId: string) {
     onOpenChange(false);
     setTerm("");
-    void router.navigate({ to, params });
+    void router.navigate({ to: "/products/$productId", params: { productId } });
   }
+
+  function goList(to: "/customers" | "/suppliers") {
+    onOpenChange(false);
+    setTerm("");
+    void router.navigate({ to });
+  }
+
 
   return (
     <CommandDialog open={open} onOpenChange={onOpenChange}>
