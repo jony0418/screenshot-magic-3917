@@ -111,7 +111,7 @@ function PriceListsPage() {
     mutationFn: async () => {
       const { error } = await supabase.rpc("bulk_update_prices", {
         _price_list_id: listId,
-        _percent: Number(percent),
+        _pct: Number(percent),
         _category_id: bulkCategory === "all" ? undefined : bulkCategory,
       });
       if (error) throw error;
