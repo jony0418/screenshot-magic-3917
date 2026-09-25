@@ -39,7 +39,19 @@ const schema = z.object({
   notes: z.string().trim().max(500).optional().or(z.literal("")),
 });
 
-export type ProductFormValues = z.infer<typeof schema>;
+type FormShape = z.infer<typeof schema>;
+
+export type ProductFormValues = Omit<
+  FormShape,
+  "barcode" | "brand" | "description" | "notes" | "category_id" | "unit_id"
+> & {
+  barcode: string | null;
+  brand: string | null;
+  description: string | null;
+  notes: string | null;
+  category_id: string | null;
+  unit_id: string | null;
+};
 
 export function ProductFormDialog({
   open,
@@ -56,7 +68,7 @@ export function ProductFormDialog({
   defaultValues?: Partial<ProductFormValues>;
   title?: string;
 }) {
-  const form = useForm<ProductFormValues>({
+  const form = useForm<FormShape>({
     resolver: zodResolver(schema),
     defaultValues: {
       sku: "",
@@ -117,7 +129,7 @@ export function ProductFormDialog({
               notes: values.notes || null,
               category_id: values.category_id || null,
               unit_id: values.unit_id || null,
-            } as unknown as ProductFormValues),
+            }),
           )}
 
         >
