@@ -111,14 +111,15 @@ export function ProductFormDialog({
           onSubmit={form.handleSubmit((values) =>
             onSubmit({
               ...values,
-              barcode: values.barcode || undefined,
-              brand: values.brand || undefined,
-              description: values.description || undefined,
-              notes: values.notes || undefined,
-              category_id: values.category_id || undefined,
-              unit_id: values.unit_id || undefined,
-            } as ProductFormValues),
+              barcode: values.barcode || null,
+              brand: values.brand || null,
+              description: values.description || null,
+              notes: values.notes || null,
+              category_id: values.category_id || null,
+              unit_id: values.unit_id || null,
+            } as unknown as ProductFormValues),
           )}
+
         >
           <div className="space-y-1.5">
             <Label htmlFor="sku">SKU *</Label>

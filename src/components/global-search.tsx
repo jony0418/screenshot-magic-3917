@@ -85,7 +85,7 @@ export function GlobalSearch({
               <CommandItem
                 key={p.id}
                 value={`prod-${p.id}-${p.name}`}
-                onSelect={() => go("/products/$productId", { productId: p.id })}
+                onSelect={() => goProduct(p.id)}
               >
                 <span className="num mr-2 text-xs text-muted-foreground">{p.sku}</span>
                 {p.name}
@@ -99,7 +99,7 @@ export function GlobalSearch({
               <CommandItem
                 key={c.id}
                 value={`cust-${c.id}-${c.business_name}`}
-                onSelect={() => go("/customers")}
+                onSelect={() => goList("/customers")}
               >
                 <span className="num mr-2 text-xs text-muted-foreground">{c.code}</span>
                 {c.business_name}
@@ -113,7 +113,7 @@ export function GlobalSearch({
               <CommandItem
                 key={s.id}
                 value={`supp-${s.id}-${s.business_name}`}
-                onSelect={() => go("/suppliers")}
+                onSelect={() => goList("/suppliers")}
               >
                 <span className="num mr-2 text-xs text-muted-foreground">{s.code}</span>
                 {s.business_name}

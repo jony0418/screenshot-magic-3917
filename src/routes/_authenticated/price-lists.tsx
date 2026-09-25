@@ -109,13 +109,14 @@ function PriceListsPage() {
 
   const bulkUpdate = useMutation({
     mutationFn: async () => {
-      const { error } = await supabase.rpc("bulk_update_prices", {
-        _price_list_id: listId,
-        _pct: Number(percent),
-        _category_id: bulkCategory === "all" ? undefined : bulkCategory,
-      });
+      const args =
+        bulkCategory === "all"
+          ? { _price_list_id: listId, _pct: Number(percent) }
+          : { _price_list_id: listId, _pct: Number(percent), _category_id: bulkCategory };
+      const { error } = await supabase.rpc("bulk_update_prices", args);
       if (error) throw error;
     },
+
     onSuccess: () => {
       toast.success("Precios actualizados");
       setBulkOpen(false);
