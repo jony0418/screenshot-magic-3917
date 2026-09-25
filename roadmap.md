@@ -6,4 +6,4 @@
 - [x] Órdenes de venta (captura con precio de lista, confirmar, surtir, cancelar)
 - [x] Inventario (existencias, kárdex, ajustes)
 - [x] Configuración (usuarios/roles, almacenes, categorías, unidades, empresa)
-- [ ] Etapa D: Docker + README
+- [x] Etapa D: Docker + README
