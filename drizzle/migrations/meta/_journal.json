@@ -8,6 +8,13 @@
       "when": 1790302472319,
       "tag": "0000_core_roles_and_settings",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790302516695,
+      "tag": "0001_catalog_products_prices_partners",
+      "breakpoints": true
     }
   ]
 }
